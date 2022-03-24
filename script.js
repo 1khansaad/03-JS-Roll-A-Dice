@@ -51,10 +51,7 @@ btnholdEl.addEventListener('click', function(){
         if(scores[activePlayer] >= 20){
             playing = false
             document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
-
-            // problem
             document.querySelector(`.player--${activePlayer}`).classList.remove('player--active');
-
             diceEl.classList.add('hidden')
         }
 
@@ -66,20 +63,19 @@ btnholdEl.addEventListener('click', function(){
 
 })
 
+
 btnNewEl.addEventListener('click', function(){
-    playing = true
+    currentScore = 0
     document.getElementById(`current--0`).textContent = 0
     document.getElementById(`current--1`).textContent = 0 
+    scores = [0, 0]
     document.getElementById(`score--0`).textContent = 0
     document.getElementById(`score--1`).textContent = 0 
     diceEl.classList.add('hidden');
-
-    // problem
-
-    document.querySelector(`.player--${activePlayer}`).classList.remove('player--winner');
-
+    const prob = document.querySelector(`.player--${activePlayer === 0 ? 1 : 0 }`)
+    prob.classList.remove('player--winner');
+    prob.classList.remove(`player--active`)
+    playing = true
     document.querySelector(`.player--${activePlayer}`).classList.add('player--active');
 
-
-    
 })
